@@ -100,7 +100,14 @@ function createWorkPlanner() {
       const cells = countries.map((country) => {
         const local = getTimeParts(slotDate, country.timeZone);
         const isWorking = local.hour >= 9 && local.hour < 18;
-        return `<span class="work-cell ${isWorking ? "is-overlap" : "is-muted"}">${formatHour(local.hour)}–${formatHour((local.hour + 1) % 24)}</span>`;
+        const isLunch = local.hour === 12;
+        const cellState = isLunch ? "is-lunch" : isWorking ? "is-overlap" : "is-muted";
+        return `
+          <span class="work-cell ${cellState}">
+            <span>${formatHour(local.hour)}–${formatHour((local.hour + 1) % 24)}</span>
+            ${isLunch ? '<small>점심시간</small>' : ""}
+          </span>
+        `;
       }).join("");
       return `
         <div class="work-row ${isCurrent ? "is-current" : ""}">
