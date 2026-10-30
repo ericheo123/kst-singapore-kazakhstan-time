@@ -358,8 +358,8 @@ h1 {
 }
 
 .work-section {
-  margin-top: 28px;
-  padding: 28px;
+  margin-top: 20px;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: var(--card);
@@ -367,29 +367,29 @@ h1 {
 }
 
 .section-heading h2 {
-  margin: 4px 0 8px;
+  margin: 2px 0 5px;
   font-size: clamp(1.45rem, 3vw, 2rem);
 }
 
 .section-heading p:last-child {
   margin: 0;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .work-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 22px 0;
+  gap: 8px;
+  margin: 12px 0;
 }
 
 .work-summary-card {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  padding: 18px;
-  border-radius: 18px;
+  gap: 3px;
+  padding: 11px 13px;
+  border-radius: 14px;
   background: #f7f9fc;
   color: var(--muted);
 }
@@ -412,9 +412,9 @@ h1 {
 .work-row {
   display: grid;
   grid-template-columns: 1.05fr repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
   align-items: center;
-  padding: 10px 12px;
+  padding: 2px 8px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -449,10 +449,10 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 4px;
   width: 100%;
-  min-height: 64px;
-  padding: 10px;
+  min-height: 36px;
+  padding: 4px 7px;
   border-radius: 12px;
   background: #f7f9fc;
   text-align: center;
@@ -462,11 +462,11 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 5px 8px;
+  padding: 4px 8px;
   border-radius: 999px;
   background: var(--blue);
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -481,14 +481,14 @@ h1 {
 }
 
 .work-row strong.is-kst-out {
-  padding: 10px;
+  padding: 4px 7px;
   border-radius: 12px;
   background: #f0f1f3;
   color: #9aa1ab;
 }
 
 .kst-slot.is-lunch {
-  padding: 10px;
+  padding: 4px 7px;
   border-radius: 12px;
   background: #fff0ed;
   color: #b44b3f;
@@ -510,8 +510,8 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 3px;
-  min-height: 64px;
-  padding: 10px;
+  min-height: 36px;
+  padding: 4px 7px;
   border-radius: 12px;
   text-align: center;
   font-weight: 750;
@@ -544,11 +544,11 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 7px;
+  padding: 4px 8px;
   border-radius: 999px;
   background: var(--blue);
   color: #fff;
-  font-size: 0.65rem !important;
+  font-size: 0.74rem !important;
   font-weight: 800;
   line-height: 1;
   white-space: nowrap;
@@ -571,7 +571,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 8px;
   font-size: 0.78rem;
   color: var(--muted);
 }
@@ -652,16 +652,16 @@ h1 {
   .work-row {
     min-width: 680px;
     gap: 6px;
-    padding: 9px 8px;
+    padding: 3px 6px;
     font-size: 0.82rem;
   }
 
   .work-cell {
-    padding: 9px 5px;
+    padding: 4px 5px;
   }
 
   .current-slot-badge {
-    font-size: 0.64rem;
+    font-size: 0.72rem;
   }
 
   .city-row {
