@@ -126,7 +126,7 @@ function createWorkPlanner() {
           <strong class="kst-slot ${kstHour >= 18 ? "is-kst-out" : ""} ${isKstLunch ? "is-lunch" : ""}">
             <span>${formatHour(kstHour)}–${formatHour(kstHour + 1)}</span>
             ${isKstLunch ? '<small class="kst-lunch-label">점심시간</small>' : ""}
-            ${isCurrent ? `<span class="current-slot-badge"><i aria-hidden="true"></i>현재 시간대 · ${formatCurrentTime(kstParts)}</span>` : ""}
+            ${isCurrent ? `<span class="current-slot-badge"><i aria-hidden="true"></i>현재 · ${formatCurrentTime(kstParts)}</span>` : ""}
           </strong>${cells}
         </div>
       `;
