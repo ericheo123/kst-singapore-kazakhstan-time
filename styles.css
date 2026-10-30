@@ -359,7 +359,7 @@ h1 {
 
 .work-section {
   margin-top: 20px;
-  padding: 20px;
+  padding: 22px;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: var(--card);
@@ -380,15 +380,15 @@ h1 {
 .work-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin: 12px 0;
+  gap: 10px;
+  margin: 16px 0;
 }
 
 .work-summary-card {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding: 11px 13px;
+  gap: 5px;
+  padding: 14px 15px;
   border-radius: 14px;
   background: #f7f9fc;
   color: var(--muted);
@@ -396,6 +396,23 @@ h1 {
 
 .work-summary-card strong {
   color: var(--ink);
+}
+
+.work-summary-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.summary-current-time {
+  color: var(--blue-strong);
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
 }
 
 .work-summary-card b {
@@ -414,7 +431,7 @@ h1 {
   grid-template-columns: 1.05fr repeat(3, 1fr);
   gap: 8px;
   align-items: center;
-  padding: 2px 8px;
+  padding: 5px 8px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -451,44 +468,22 @@ h1 {
   justify-content: center;
   gap: 4px;
   width: 100%;
-  min-height: 36px;
-  padding: 4px 7px;
+  min-height: 42px;
+  padding: 6px 7px;
   border-radius: 12px;
   background: #f7f9fc;
   text-align: center;
 }
 
-.current-slot-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.current-slot-badge i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
-  animation: current-pulse 1.8s ease-in-out infinite;
-}
-
 .work-row strong.is-kst-out {
-  padding: 4px 7px;
+  padding: 6px 7px;
   border-radius: 12px;
   background: #f0f1f3;
   color: #9aa1ab;
 }
 
 .kst-slot.is-lunch {
-  padding: 4px 7px;
+  padding: 6px 7px;
   border-radius: 12px;
   background: #fff0ed;
   color: #b44b3f;
@@ -500,18 +495,14 @@ h1 {
   font-weight: 800;
 }
 
-.kst-slot.is-lunch .current-slot-badge {
-  background: #c76557;
-}
-
 .work-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 3px;
-  min-height: 36px;
-  padding: 4px 7px;
+  min-height: 42px;
+  padding: 6px 7px;
   border-radius: 12px;
   text-align: center;
   font-weight: 750;
@@ -538,33 +529,6 @@ h1 {
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: -0.01em;
-}
-
-.local-now-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 0.74rem !important;
-  font-weight: 800;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.local-now-badge i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  animation: current-pulse 1.8s ease-in-out infinite;
-}
-
-.work-cell.is-lunch .local-now-badge {
-  background: #c76557;
-  color: #fff;
 }
 
 .work-legend {
@@ -599,13 +563,6 @@ h1 {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes current-pulse {
-  50% {
-    opacity: 0.45;
-    transform: scale(0.8);
   }
 }
 
@@ -658,10 +615,6 @@ h1 {
 
   .work-cell {
     padding: 4px 5px;
-  }
-
-  .current-slot-badge {
-    font-size: 0.72rem;
   }
 
   .city-row {
