@@ -99,13 +99,15 @@ function createWorkPlanner() {
       const slotDate = new Date(Date.UTC(kstParts.year, kstParts.month - 1, kstParts.day, kstHour - 9));
       const cells = countries.map((country) => {
         const local = getTimeParts(slotDate, country.timeZone);
+        const currentLocal = getTimeParts(now, country.timeZone);
         const isWorking = local.hour >= 9 && local.hour < 18;
         const isLunch = local.hour === 12;
         const cellState = isLunch ? "is-lunch" : isWorking ? "is-overlap" : "is-muted";
         return `
-          <span class="work-cell ${cellState}">
+          <span class="work-cell ${cellState} ${isCurrent ? "has-current" : ""}">
             <span>${formatHour(local.hour)}–${formatHour((local.hour + 1) % 24)}</span>
             ${isLunch ? '<small>점심시간</small>' : ""}
+            ${isCurrent ? `<small class="local-now-badge"><i aria-hidden="true"></i>현재 · ${formatCurrentTime(currentLocal)}</small>` : ""}
           </span>
         `;
       }).join("");
