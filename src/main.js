@@ -84,7 +84,8 @@ function createWorkPlanner() {
     `;
   }).join("");
 
-  const rows = Array.from({ length: 9 }, (_, index) => 9 + index);
+  // 카자흐스탄의 현지 근무 종료(18:00 = 한국 22:00)까지 표시합니다.
+  const rows = Array.from({ length: 13 }, (_, index) => 9 + index);
   workGridElement.innerHTML = `
     <div class="work-row work-head">
       <span>한국</span><span>싱가포르</span><span>카자흐스탄</span>
@@ -98,7 +99,7 @@ function createWorkPlanner() {
       }).join("");
       return `
         <div class="work-row ${kstParts.hour === kstHour ? "is-current" : ""}">
-          <strong>${formatHour(kstHour)}–${formatHour(kstHour + 1)}</strong>${cells}
+          <strong class="${kstHour >= 18 ? "is-kst-out" : ""}">${formatHour(kstHour)}–${formatHour(kstHour + 1)}</strong>${cells}
         </div>
       `;
     }).join("")}
