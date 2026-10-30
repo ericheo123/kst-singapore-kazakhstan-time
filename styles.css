@@ -481,6 +481,11 @@ h1 {
 }
 
 .work-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
   padding: 10px;
   border-radius: 12px;
   text-align: center;
@@ -496,6 +501,18 @@ h1 {
 .work-cell.is-muted {
   background: #f0f1f3;
   color: #9aa1ab;
+}
+
+.work-cell.is-lunch {
+  background: #fff0ed;
+  color: #b44b3f;
+  box-shadow: inset 0 0 0 1px rgba(198, 86, 70, 0.14);
+}
+
+.work-cell.is-lunch small {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .work-legend {
@@ -519,6 +536,11 @@ h1 {
 
 .legend-muted {
   background: #f0f1f3;
+}
+
+.legend-lunch {
+  background: #fff0ed;
+  color: #b44b3f;
 }
 
 @keyframes card-rise {
