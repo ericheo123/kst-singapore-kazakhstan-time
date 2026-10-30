@@ -446,9 +446,16 @@ h1 {
 
 .kst-slot {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 7px;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f7f9fc;
+  text-align: center;
 }
 
 .current-slot-badge {
@@ -503,6 +510,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 3px;
+  min-height: 64px;
   padding: 10px;
   border-radius: 12px;
   text-align: center;
