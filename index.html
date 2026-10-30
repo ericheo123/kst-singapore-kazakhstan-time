@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>싱가포르·카자흐스탄 관할 시간</title>
+    <title>싱가포르·카자흐스탄 시간 비교</title>
     <meta
       name="description"
-      content="한국 시간을 기준으로 싱가포르·카자흐스탄 관할 8개 국가의 현재 시간과 서머타임을 실시간으로 확인하세요."
+      content="한국 시간을 기준으로 싱가포르와 카자흐스탄의 현재 시간, 근무시간과 미팅 가능 시간을 비교하세요."
     />
     <link
       rel="stylesheet"
@@ -27,13 +27,13 @@
           <p class="eyebrow">KST</p>
           <h1>싱가포르·카자흐스탄 시간</h1>
           <p class="hero-text">
-            서울 시간을 기준으로 8개 국가를 싱가포르·카자흐스탄 관할별로 묶어
-            현재 시간과 시차, 서머타임 적용 기간을 확인할 수 있습니다.
+            서울 시간을 기준으로 싱가포르와 카자흐스탄의 현재 시간과 시차,
+            근무시간이 겹치는 미팅 가능 구간을 한눈에 확인할 수 있습니다.
           </p>
           <div class="hero-points">
             <span>실시간 갱신</span>
             <span>시차 표시</span>
-            <span>관할 법인별 그룹 보기</span>
+            <span>워킹아워 비교</span>
           </div>
         </div>
 
@@ -59,15 +59,30 @@
             <span>각 나라의 현지 시간과 한국 대비 시차를 함께 보여줍니다.</span>
           </article>
           <article class="info-card">
-            <strong>관할 법인별 묶음</strong>
-            <span>같은 관할 안에서는 현지 시간이 같은 국가를 한 줄로 합칩니다.</span>
+            <strong>근무시간 기준</strong>
+            <span>세 나라 모두 평일 09:00–18:00을 기준으로 비교합니다.</span>
           </article>
         </section>
 
         <section id="clock-grid" class="clock-grid" aria-label="국가별 현재 시간"></section>
+
+        <section class="work-section" aria-labelledby="work-title">
+          <div class="section-heading">
+            <p class="eyebrow">WORKING HOURS</p>
+            <h2 id="work-title">한국 근무시간 기준 비교</h2>
+            <p>한국 09:00–18:00 동안의 현지 시간을 보여줍니다. 현지 근무시간과 겹치면 파란색으로 강조합니다.</p>
+          </div>
+          <div id="work-summary" class="work-summary" aria-label="국가별 근무시간의 한국 시간 환산"></div>
+          <div id="work-grid" class="work-grid" aria-label="한국 시간대별 근무시간 비교"></div>
+          <div class="work-legend">
+            <span class="legend-active">현지 근무시간과 겹침</span>
+            <span class="legend-muted">현지 근무시간 밖</span>
+          </div>
+        </section>
       </main>
     </div>
 
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
+
