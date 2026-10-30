@@ -14,6 +14,14 @@ const jurisdictions = [
     timeZones: [
       { label: "카자흐스탄 · 아스타나", timeZone: "Asia/Almaty" }
     ]
+  },
+  {
+    group: "베트남",
+    englishName: "VIETNAM",
+    accent: "UTC+7",
+    timeZones: [
+      { label: "베트남 · 호찌민", timeZone: "Asia/Ho_Chi_Minh" }
+    ]
   }
 ];
 
@@ -70,7 +78,8 @@ function createWorkPlanner() {
   const kstParts = getTimeParts(now, "Asia/Seoul");
   const countries = [
     { name: "싱가포르", timeZone: "Asia/Singapore" },
-    { name: "카자흐스탄", timeZone: "Asia/Almaty" }
+    { name: "카자흐스탄", timeZone: "Asia/Almaty" },
+    { name: "베트남", timeZone: "Asia/Ho_Chi_Minh" }
   ];
 
   workSummaryElement.innerHTML = countries.map((country) => {
@@ -92,7 +101,7 @@ function createWorkPlanner() {
   const rows = Array.from({ length: 13 }, (_, index) => 9 + index);
   workGridElement.innerHTML = `
     <div class="work-row work-head">
-      <span>한국</span><span>싱가포르</span><span>카자흐스탄</span>
+      <span>한국</span><span>싱가포르</span><span>카자흐스탄</span><span>베트남</span>
     </div>
     ${rows.map((kstHour) => {
       const isCurrent = kstParts.hour === kstHour;
