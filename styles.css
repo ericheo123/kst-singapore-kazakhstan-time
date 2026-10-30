@@ -379,7 +379,7 @@ h1 {
 
 .work-summary {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin: 22px 0;
 }
@@ -404,14 +404,14 @@ h1 {
 }
 
 .work-grid {
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 20px;
 }
 
 .work-row {
   display: grid;
-  grid-template-columns: 1.05fr 1fr 1fr;
+  grid-template-columns: 1.05fr repeat(3, 1fr);
   gap: 10px;
   align-items: center;
   padding: 10px 12px;
@@ -625,6 +625,7 @@ h1 {
   }
 
   .work-row {
+    min-width: 680px;
     gap: 6px;
     padding: 9px 8px;
     font-size: 0.82rem;
