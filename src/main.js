@@ -1,25 +1,18 @@
 const jurisdictions = [
   {
-    group: "싱가포르 관할",
-    englishName: "SINGAPORE JURISDICTION",
-    countries: ["싱가포르", "방글라데시", "스리랑카", "네팔"],
-    accent: "4개 시간대",
+    group: "싱가포르",
+    englishName: "SINGAPORE",
+    accent: "UTC+8",
     timeZones: [
-      { label: "싱가포르", timeZone: "Asia/Singapore" },
-      { label: "방글라데시 · 다카", timeZone: "Asia/Dhaka" },
-      { label: "스리랑카 · 콜롬보", timeZone: "Asia/Colombo" },
-      { label: "네팔 · 카트만두", timeZone: "Asia/Kathmandu" }
+      { label: "싱가포르", timeZone: "Asia/Singapore" }
     ]
   },
   {
-    group: "카자흐스탄 관할",
-    englishName: "KAZAKHSTAN JURISDICTION",
-    countries: ["카자흐스탄", "우크라이나", "우즈베키스탄_RU", "우즈베키스탄_UZ"],
-    accent: "3개 시간대",
+    group: "카자흐스탄",
+    englishName: "KAZAKHSTAN",
+    accent: "UTC+5",
     timeZones: [
-      { label: "카자흐스탄 · 아스타나", timeZone: "Asia/Almaty" },
-      { label: "우크라이나 · 키이우", timeZone: "Europe/Kyiv" },
-      { label: "우즈베키스탄_RU · UZ", timeZone: "Asia/Tashkent" }
+      { label: "카자흐스탄 · 아스타나", timeZone: "Asia/Almaty" }
     ]
   }
 ];
@@ -27,6 +20,8 @@ const jurisdictions = [
 const kstTimeElement = document.querySelector("#kst-time");
 const kstDateElement = document.querySelector("#kst-date");
 const gridElement = document.querySelector("#clock-grid");
+const workSummaryElement = document.querySelector("#work-summary");
+const workGridElement = document.querySelector("#work-grid");
 const dstInfoCache = new Map();
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
 const MINUTE_IN_MS = 60 * 1000;
@@ -43,7 +38,6 @@ function createCards() {
             </div>
             <div class="offset-badge">${group.accent}</div>
           </div>
-          <div class="country-chips">${group.countries.map((name) => `<span>${name}</span>`).join("")}</div>
           <div class="city-list">
             ${group.timeZones.map((zone) => `
                   <div class="city-row" data-timezone="${zone.timeZone}">
@@ -61,6 +55,54 @@ function createCards() {
       `
     )
     .join("");
+}
+
+function formatHour(hour) {
+  return `${String(hour).padStart(2, "0")}:00`;
+}
+
+function createWorkPlanner() {
+  const now = new Date();
+  const kstParts = getTimeParts(now, "Asia/Seoul");
+  const countries = [
+    { name: "싱가포르", timeZone: "Asia/Singapore" },
+    { name: "카자흐스탄", timeZone: "Asia/Almaty" }
+  ];
+
+  workSummaryElement.innerHTML = countries.map((country) => {
+    const localStart = new Date(Date.UTC(kstParts.year, kstParts.month - 1, kstParts.day, 9));
+    const localOffset = getOffsetMinutes(localStart, country.timeZone);
+    const kstDifference = (9 * 60 - localOffset) / 60;
+    const kstStart = 9 + kstDifference;
+    const kstEnd = 18 + kstDifference;
+    return `
+      <article class="work-summary-card">
+        <strong>${country.name} 근무시간</strong>
+        <span>현지 09:00–18:00</span>
+        <b>한국 ${formatHour(kstStart)}–${formatHour(kstEnd)}</b>
+      </article>
+    `;
+  }).join("");
+
+  const rows = Array.from({ length: 9 }, (_, index) => 9 + index);
+  workGridElement.innerHTML = `
+    <div class="work-row work-head">
+      <span>한국</span><span>싱가포르</span><span>카자흐스탄</span>
+    </div>
+    ${rows.map((kstHour) => {
+      const slotDate = new Date(Date.UTC(kstParts.year, kstParts.month - 1, kstParts.day, kstHour - 9));
+      const cells = countries.map((country) => {
+        const local = getTimeParts(slotDate, country.timeZone);
+        const isWorking = local.hour >= 9 && local.hour < 18;
+        return `<span class="work-cell ${isWorking ? "is-overlap" : "is-muted"}">${formatHour(local.hour)}–${formatHour((local.hour + 1) % 24)}</span>`;
+      }).join("");
+      return `
+        <div class="work-row ${kstParts.hour === kstHour ? "is-current" : ""}">
+          <strong>${formatHour(kstHour)}–${formatHour(kstHour + 1)}</strong>${cells}
+        </div>
+      `;
+    }).join("")}
+  `;
 }
 
 function getTimeParts(date, timeZone) {
@@ -315,5 +357,7 @@ function getDayDifference(now, timeZone, targetParts) {
 }
 
 createCards();
+createWorkPlanner();
 updateClock();
 setInterval(updateClock, 1000);
+
