@@ -433,6 +433,13 @@ h1 {
   box-shadow: inset 4px 0 0 var(--blue-strong);
 }
 
+.work-row strong.is-kst-out {
+  padding: 10px;
+  border-radius: 12px;
+  background: #f0f1f3;
+  color: #9aa1ab;
+}
+
 .work-cell {
   padding: 10px;
   border-radius: 12px;
