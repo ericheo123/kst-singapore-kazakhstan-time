@@ -105,6 +105,7 @@ function createWorkPlanner() {
     </div>
     ${rows.map((kstHour) => {
       const isCurrent = kstParts.hour === kstHour;
+      const isKstLunch = kstHour === 12;
       const slotDate = new Date(Date.UTC(kstParts.year, kstParts.month - 1, kstParts.day, kstHour - 9));
       const cells = countries.map((country) => {
         const local = getTimeParts(slotDate, country.timeZone);
@@ -122,8 +123,9 @@ function createWorkPlanner() {
       }).join("");
       return `
         <div class="work-row ${isCurrent ? "is-current" : ""}">
-          <strong class="kst-slot ${kstHour >= 18 ? "is-kst-out" : ""}">
+          <strong class="kst-slot ${kstHour >= 18 ? "is-kst-out" : ""} ${isKstLunch ? "is-lunch" : ""}">
             <span>${formatHour(kstHour)}–${formatHour(kstHour + 1)}</span>
+            ${isKstLunch ? '<small class="kst-lunch-label">점심시간</small>' : ""}
             ${isCurrent ? `<span class="current-slot-badge"><i aria-hidden="true"></i>현재 시간대 · ${formatCurrentTime(kstParts)}</span>` : ""}
           </strong>${cells}
         </div>
