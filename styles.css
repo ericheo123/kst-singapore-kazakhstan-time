@@ -480,6 +480,23 @@ h1 {
   color: #9aa1ab;
 }
 
+.kst-slot.is-lunch {
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff0ed;
+  color: #b44b3f;
+  box-shadow: inset 0 0 0 1px rgba(198, 86, 70, 0.14);
+}
+
+.kst-lunch-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.kst-slot.is-lunch .current-slot-badge {
+  background: #c76557;
+}
+
 .work-cell {
   display: flex;
   flex-direction: column;
