@@ -61,6 +61,10 @@ function formatHour(hour) {
   return `${String(hour).padStart(2, "0")}:00`;
 }
 
+function formatCurrentTime(parts) {
+  return `${String(parts.hour).padStart(2, "0")}:${String(parts.minute).padStart(2, "0")}`;
+}
+
 function createWorkPlanner() {
   const now = new Date();
   const kstParts = getTimeParts(now, "Asia/Seoul");
@@ -91,6 +95,7 @@ function createWorkPlanner() {
       <span>한국</span><span>싱가포르</span><span>카자흐스탄</span>
     </div>
     ${rows.map((kstHour) => {
+      const isCurrent = kstParts.hour === kstHour;
       const slotDate = new Date(Date.UTC(kstParts.year, kstParts.month - 1, kstParts.day, kstHour - 9));
       const cells = countries.map((country) => {
         const local = getTimeParts(slotDate, country.timeZone);
@@ -98,8 +103,11 @@ function createWorkPlanner() {
         return `<span class="work-cell ${isWorking ? "is-overlap" : "is-muted"}">${formatHour(local.hour)}–${formatHour((local.hour + 1) % 24)}</span>`;
       }).join("");
       return `
-        <div class="work-row ${kstParts.hour === kstHour ? "is-current" : ""}">
-          <strong class="${kstHour >= 18 ? "is-kst-out" : ""}">${formatHour(kstHour)}–${formatHour(kstHour + 1)}</strong>${cells}
+        <div class="work-row ${isCurrent ? "is-current" : ""}">
+          <strong class="kst-slot ${kstHour >= 18 ? "is-kst-out" : ""}">
+            <span>${formatHour(kstHour)}–${formatHour(kstHour + 1)}</span>
+            ${isCurrent ? `<span class="current-slot-badge"><i aria-hidden="true"></i>현재 시간대 · ${formatCurrentTime(kstParts)}</span>` : ""}
+          </strong>${cells}
         </div>
       `;
     }).join("")}
@@ -361,4 +369,5 @@ createCards();
 createWorkPlanner();
 updateClock();
 setInterval(updateClock, 1000);
+setInterval(createWorkPlanner, 30000);
 
